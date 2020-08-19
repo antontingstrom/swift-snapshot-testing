@@ -110,7 +110,13 @@ private func compare(_ old: UIImage, _ new: UIImage, precision: Float, strategy:
     for byte in 0..<byteCount {
       if oldBytes[byte] != newerBytes[byte] {
         let difference = abs((Float(oldBytes[byte]) / 255) - (Float(newerBytes[byte]) / 255))
-        if difference > threshold { return false }
+        if difference > threshold {
+          print("========================")
+          print("failing due to difference = \(difference)")
+          print("oldByte = \(oldBytes[byte])")
+          print("newerByte = \(newerBytes[byte])")
+          return false
+        }
       }
     }
   }
